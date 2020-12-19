@@ -1,0 +1,368 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">XYZ SPORTSCLUB</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Personnel Module Services</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Register Module Services</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="row pt-5">
+      <div class="col-md-2">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Staff</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Drink</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Games</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Players</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Subscription</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Players per Activity</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Selling Point</a>
+            </li>
+          </ul>
+      </div>
+      <div class="col-md-10">
+        <div class="jumbotron  jumbotron-fluid">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="container">
+                        <form #s="ngForm" (ngSubmit)="registerStaff(s)">
+                            <div class="form-group">
+                                <label for="fnamelbl">Firstname</label>
+                                <input type="text" class="form-control" id="fnamelbl" name="firstname" placeholder="Enter Firstname" ngModel>
+                            </div>
+                            <div class="form-group">
+                                <label for="lnamelbl">Lastname</label>
+                                <input type="text" class="form-control" id="lnamelbl" name="lastname" placeholder="Enter Lastname" ngModel>
+                            </div>
+                            <div class="form-group">
+                                <label for="ssnitlbl">SSNIT Number</label>
+                                <input type="text" class="form-control" id="ssnitlbl" name="ssnit" placeholder="Enter SSNIT number" ngModel>
+                            </div>
+                              <button type="submit" class="btn btn-primary">Add Staff</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="container">
+                        <div class="table-responsive">
+                            <table class="table table-striped  table-dark">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">StaffID</th>
+                                    <th scope="col">SSNIT</th>
+                                    <th scope="col">Firstname</th>
+                                    <th scope="col">Lastname</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let s of staff">
+                                        <td>{{s.staffid}}</td>
+                                        <td>{{s.ssnit}}</td>
+                                        <td>{{s.firstname}}</td>
+                                        <td>{{s.lastname}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="jumbotron  jumbotron-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5">
+                        <form #d="ngForm" (ngSubmit)="addDrink(d)">
+                            <div class="form-group">
+                                <label for="drinkcostlbl">Drink Cost</label>
+                                <input type="text" class="form-control" id="drinkcostlbl" name="drinkcost" placeholder="Enter Price" ngModel>
+                            </div>
+                            <div class="form-group">
+                                <label for="drinknamelbl">Drink Name</label>
+                                <input type="text" class="form-control" id="drinknamelbl" name="drinkname" placeholder="Enter Name" ngModel>
+                            </div>
+                            <div class="form-group">
+                                <label for="drinktypelbl">Drink Type</label>
+                                <input type="text" class="form-control" id="drinktypelbl" name="drinktype" placeholder="Enter Drink Type" ngModel>
+                            </div>
+                              <button type="submit" class="btn btn-primary">Add Drink</button>
+                        </form>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="table-responsive">
+                            <div class="container">
+                                <table class="table table-striped  table-dark">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col">DrinkID</th>
+                                        <th scope="col">DrinkName</th>
+                                        <th scope="col">DrinkType</th>
+                                        <th scope="col">DrinkCost</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let d of drink">
+                                            <td>{{d.drinkid}}</td>
+                                            <td>{{d.drinkcost}}</td>
+                                            <td>{{d.drinkname}}</td>
+                                            <td>{{d.drinktype}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="jumbotron  jumbotron-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5">
+                        <form #g="ngForm" (ngSubmit)="addGame(g)">
+                            <div class="form-group">
+                                <label for="sportsnamelbl">Sportsname</label>
+                                <input type="text" class="form-control" id="sportsnamelbl" name="sportsname" placeholder="Enter Sport Name" ngModel>
+                            </div>
+                              <button type="submit" class="btn btn-primary">Add Game</button>
+                        </form>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="table-responsive">
+                            <div class="container">
+                                <table class="table table-striped  table-dark">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col">SportsID</th>
+                                        <th scope="col">SportsName</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let g of game">
+                                            <td>{{g.sportid}}</td>
+                                            <td>{{g.sportsname}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="jumbotron  jumbotron-fluid">
+            <div class="container">
+                <div class="row">
+                    <h3>Players List</h3>
+                        <div class="table-responsive">
+                            <div class="container">
+                                <table class="table table-striped  table-dark">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col">PlayerID</th>
+                                        <th scope="col">Firstname</th>
+                                        <th scope="col">Lastname</th>
+                                        <th scope="col">Location</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let p of player">
+                                            <td>{{p.playerid}}</td>
+                                            <td>{{p.firstname}}</td>
+                                            <td>{{p.lastname}}</td>
+                                            <td>{{p.location}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="jumbotron  jumbotron-fluid">
+           <div class="container">
+               <div class="row">
+                <form #y="ngForm" (ngSubmit)="addPlayer(y)">
+                    <div class="form-group">
+                        <label for="firstnamelbl">Firstname</label>
+                        <input type="text" class="form-control" id="firstnamelbl" name="firstname" placeholder="Enter Firstname" ngModel>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastnamelbl">Lastname</label>
+                        <input type="text" class="form-control" id="lastnamelbl" name="lastname" placeholder="Enter Lastname" ngModel>
+                    </div>
+                    <div class="form-group">
+                        <label for="locationlbl">Location</label>
+                        <input type="text" class="form-control" id="locationlbl" name="location" placeholder="Enter Location" ngModel>
+                    </div>
+                      <button type="submit" class="btn btn-primary">Add Player</button>
+                </form>
+               </div>
+           </div>
+        </div>
+        <div class="jumbotron  jumbotron-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5">
+                        <form #r="ngForm" (ngSubmit)="subScribePlayer(r)">
+                            <div class="form-group">
+                                <label for="playerIdlbl">PlayerID</label>
+                                <input type="text" class="form-control" id="playerIdlbl" name="playerid" placeholder="Enter Player ID" ngModel>
+                            </div>
+                            <div class="form-group">
+                                <label for="firstnamelbl">Firstname</label>
+                                <input type="text" class="form-control" id="firstnamelbl" name="firstname" placeholder="Enter firstname" ngModel>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastnamelbl">Lastname</label>
+                                <input type="text" class="form-control" id="lastnamelbl" name="lastname" placeholder="Enter Lastname" ngModel>
+                            </div>
+                            <div class="form-group">
+                                <label for="locationlbl">Location</label>
+                                <input type="text" class="form-control" id="locationlbl" name="location" placeholder="Enter Location" ngModel>
+                            </div>
+                            <div class="form-group">
+                                <label for="availableSportlbl">Select Available Sport</label>
+                                    <select id="sportid">
+                                        <option *ngFor="let sport of  game" value="{{sport.sportid}}">{{sport.sportid}} - {{sport.sportsname}}</option>
+                                    </select>  
+                            </div>
+                              <button type="submit" class="btn btn-primary">Subscribe to Sport</button>
+                        </form>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="table-responsive">
+                            <div class="container">
+                                <table class="table table-striped  table-dark">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col">PlayerID</th>
+                                        <th scope="col">Firstname</th>
+                                        <th scope="col">Lastname</th>
+                                        <th scope="col">Location</th>
+                                        <th scope="col">SportsName</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let b of subscriptions">
+                                            <td>{{b.subscriptionid}}</td>
+                                            <td>{{b.player.firstname}}</td>
+                                            <td>{{b.player.lastname}}</td>
+                                            <td>{{b.player.location}}</td>
+                                            <td>{{b.sport.sportsname}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="jumbotron  jumbotron-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5">
+                        <label for="peractivitylbl">PlayerS per Activity</label>
+                        <!-- <input type="text" placeholder="Enter activityId" #activityid> -->
+                        <select id='sportid2'>
+                            <option *ngFor="let sport of  selectgame" value="{{sport.sportid}}">{{sport.sportsname}}</option>
+                        </select>  
+                        <button (click)="getAllPlayersPerSubscription()">Get Activity Subscribers</button>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="table-responsive">
+                            <div class="container">
+                                <table class="table table-striped  table-dark">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col">PlayerID</th>
+                                        <th scope="col">Firstname</th>
+                                        <th scope="col">Lastname</th>
+                                        <th scope="col">Location</th>
+                                        <th scope="col">SportsName</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr *ngFor="let s of playersperSports">
+                                            <td>{{s.subscriptionid}}</td>
+                                            <td>{{s.player.firstname}}</td>
+                                            <td>{{s.player.lastname}}</td>
+                                            <td>{{s.player.location}}</td>
+                                            <td>{{s.sport.sportsname}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+      </div>
+
+      <div class="jumbotron  jumbotron-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Get Drinks Bought</h4>
+                    <div class="table-responsive">
+                        <div class="container">
+                            <table class="table table-striped  table-dark">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Firstname</th>
+                                    <th scope="col">Lastname</th>
+                                    <th scope="col">Location</th>
+                                    <th scope="col">DrinkName</th>
+                                    <th scope="col">DrinkCost</th>
+                                    <th scope="col">DrinkType</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let k of drinksbought">
+                                        <td>{{k.player.firstname}}</td>
+                                        <td>{{k.player.lastname}}</td>
+                                        <td>{{k.player.location}}</td>
+                                        <td>{{k.drink.drinkcost}}</td>
+                                        <td>{{k.drink.drinkname}}</td>
+                                        <td>{{k.drink.drinktype}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  </div>
+
+ 
+  
+  
+
+   
